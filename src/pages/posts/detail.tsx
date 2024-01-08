@@ -30,7 +30,7 @@ export default function PostDetail() {
   return (
     <div className="post">
       <div className="post__header">
-        <button type="button" onClick={() => navigate(-1)}>
+        <button type="button" onClick={() => navigate("/")}>
           <IoIosArrowBack className="post__header-btn" />
         </button>
       </div>

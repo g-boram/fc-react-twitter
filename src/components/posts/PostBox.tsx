@@ -16,7 +16,6 @@ export default function PostBox({ post }: PostBoxProps) {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // 게시글 삭제
   const handleDelete = async () => {
     const confirm = window.confirm("해당 게시글을 삭제하시겠습니까?");
     if (confirm) {
@@ -44,6 +43,13 @@ export default function PostBox({ post }: PostBoxProps) {
             <div className="post__createdAt">{post?.createdAt}</div>
           </div>
           <div className="post__box-content">{post?.content}</div>
+          <div className="post-form__hashtags-outputs">
+            {post?.hashTags?.map((tag, index) => (
+              <span className="post-form__hashtags-tag" key={index}>
+                #{tag}
+              </span>
+            ))}
+          </div>
         </div>
       </Link>
       <div className="post__box-footer">
