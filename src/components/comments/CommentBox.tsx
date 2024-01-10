@@ -8,6 +8,8 @@ import styles from "./Comment.module.scss";
 
 import { toast } from "react-toastify";
 
+import useTranslation from "hooks/useTranslation";
+
 export interface CommentProps {
   comment: string;
   uid: string;
@@ -22,6 +24,7 @@ interface CommentBoxProps {
 
 export default function CommentBox({ data, post }: CommentBoxProps) {
   const { user } = useContext(AuthContext);
+  const t = useTranslation();
   const handleDeleteComment = async () => {
     if (post) {
       try {
@@ -41,12 +44,7 @@ export default function CommentBox({ data, post }: CommentBoxProps) {
       <div className={styles.comment__borderBox}>
         <div className={styles.comment__imgBox}>
           <div className={styles.comment__flexBox}>
-            {user?.photoURL ? (
-              <img src={user?.photoURL} alt="profile" />
-              ):(
-              <img src={`/logo192.png`} alt="profile" />
-              )
-            }
+            <img src={`/logo192.png`} alt="profile" />
             <div className={styles.comment__email}>{data?.email}</div>
             <div className={styles.comment__createdAt}>{data?.createdAt}</div>
           </div>
@@ -59,7 +57,7 @@ export default function CommentBox({ data, post }: CommentBoxProps) {
               className="comment__delete-btn"
               onClick={handleDeleteComment}
             >
-              삭제
+              {t("BUTTON_DELETE")}
             </button>
           )}
         </div>
