@@ -45,6 +45,10 @@ body {
   border: none;
   cursor: pointer;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+  &:disabled {
+    opacity: 0.5;
+  }
 }
 
 .transparent {
@@ -75,7 +79,7 @@ body {
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     background-color: transparent;
 
     button {
@@ -88,6 +92,11 @@ body {
       background-color: transparent;
       padding: 16px 0px;
       backdrop-filter: blur(10px);
+
+      svg {
+        backdrop-filter: blur(10px);
+        background-color: transparent;
+      }
     }
   }
 }
@@ -315,6 +324,36 @@ body {
     display: flex;
     gap: 4px;
     align-items: center;
+
+    &--between {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  &__follow-btn {
+    @extend .button;
+    background-color: $white;
+    color: $activeBorder;
+
+    &:hover,
+    &:focus {
+      background-color: $activeBorder;
+      color: $white;
+    }
+  }
+
+  &__following-btn {
+    @extend .button;
+    background-color: $activeBorder;
+    color: $white;
+
+    &:hover,
+    &:focus {
+      background-color: $white;
+      color: $activeBorder;
+    }
   }
 
   &__email,
